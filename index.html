@@ -27,6 +27,34 @@
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
 
+		<script>
+			function convertirMoneda() {
+			  // Obtener el valor seleccionado del menú de selección
+			  var tipoMoneda = document.getElementById("moneda").value;
+		
+			  // Obtener el precio del producto
+			  var precioProducto = parseFloat(document.getElementById("precio").textContent);
+		
+			  // Realizar la conversión basada en el tipo de moneda seleccionado
+			  var precioConvertido;
+			  switch (tipoMoneda) {
+				case "USD":
+				  precioConvertido = precioProducto * 0.85; // Conversión a dólares
+				  break;
+				case "EUR":
+				  precioConvertido = precioProducto * 0.72; // Conversión a euros
+				  break;
+				case "JPY":
+				  precioConvertido = precioProducto * 89.42; // Conversión a yenes japoneses
+				  break;
+				// Agregar más casos para otras monedas si es necesario
+			  }
+		
+			  // Mostrar el precio convertido en el elemento de visualización
+			  document.getElementById("precio-convertido").textContent = precioConvertido.toFixed(2);
+			}
+		  </script>
+
     </head>
 	<body>
 		<!-- HEADER -->
@@ -40,7 +68,15 @@
 						<li><a href="https://goo.gl/maps/KRNskj2Dn5TTrGYA6" target="_blank" rel="noopener noreferrer">C. Independencia 55, Centro, 44100 Guadalajara, Jal. <i class="fa fa-map-marker"></i></a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<li><a href="#"><i class="fa fa-dollar"></i> MXN</a></li>
+						<i><p>Seleccione el tipo de moneda:</p>
+
+  <select id="moneda" onchange="convertirMoneda()"></i>
+    <option value="USD">Dólares estadounidenses</option>
+    <option value="EUR">Euros</option>
+    <option value="JPY">Yenes japoneses</option>
+	<option value="MNX">Pesos Mexicanos</option>
+    <!-- Agregar más opciones para otras monedas si es necesario -->
+  </select>
 						<li><a href="#"><i class="fa fa-user-o"></i> Iniciar Sesión</a></li>
 					</ul>
 				</div>
@@ -635,11 +671,13 @@
 									<li><a href="#">Ayuda</a></li>
 								</ul>
 							</div>
+
 						</div>
 					</div>
 					<!-- /row -->
 				</div>
 				<!-- /container -->
+				
 			</div>
 			<!-- /top footer -->
 
